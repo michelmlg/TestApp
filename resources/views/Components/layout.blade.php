@@ -1,3 +1,7 @@
+<?php
+use App\Http\Controllers\HomeController;
+?>
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -10,9 +14,8 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
-
         <!-- Styles -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
 
     </head>
     <body>
@@ -28,6 +31,9 @@
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/dashboard" tabindex="-1">Dashboard</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/link">About</a>
             </li>
             <li class="nav-item dropdown">
@@ -35,14 +41,10 @@
                 Dropdown
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="">Action</a>
+                <a class="dropdown-item" href="">Another action</a>
+                <a class="dropdown-item" href="">Something else here</a>
                 </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
             </li>
             </ul>
             <form class="form-inline d-flex justify-content-around my-2 my-lg-0">
@@ -57,5 +59,5 @@
 
 
     </body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="{{asset('js/bootstrap.js')}}"></script>
 </html>
