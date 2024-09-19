@@ -5,4 +5,8 @@
     <h1>
         Titulo
     </h1>
+
+    <?php
+    var_dump(getenv());
+    ?>
 </x-layout>
