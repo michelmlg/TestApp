@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PageAcaoControler;
+use App\Http\Controllers\AcaoControler;
 
 Route::get('/', function () {
     return view('welcome');
@@ -12,4 +12,4 @@ Route::get('/link', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
-Route::get('/acao/{symbol}', [PageAcaoControler::class, 'show'])->name('acao.show');
+Route::get('/acao/{symbol}', [AcaoControler::class, 'show'])->name('acao.show');
