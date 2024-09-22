@@ -16,35 +16,68 @@ class AcaoControler extends Controller
         return view('acao.infoPage', compact('acao'));
     }
 
-    private function buscarDadosAcao($ticker)
-{
-    // Chamada à API para buscar os detalhes da ação usando o símbolo
-    $response = Http::get(getenv('BRAPI_API_URL') . "quote/{$ticker}?token=" . getenv('BRAPI_API_TOKEN'));
+    public function dashboard(){
+        // Aqui você chama a função buscaTopAcoes para obter as ações
+        $response = $this->buscarTopAcoes(25);
 
-    // Verifique se a resposta foi bem-sucedida
-    if ($response->successful()) {
-        $data = $response->json(); // Decodifica a resposta JSON
+        $content = $response->getContent();
 
-        // Acesse os dados dentro de "results"
-        $acao = $data['results'][0] ?? null;
+        $data = json_decode($content, true); 
 
-        if ($acao) {
-            return [
-                'symbol' => $acao['symbol'] ?? 'N/A',
-                'name' => $acao['shortName'] ?? 'Nome não disponível',
-                'price' => $acao['regularMarketPrice'] ?? 0.00,
-                'logo' => $acao['logourl'] ?? null
-            ];
-        }
+        // Retorna a view 'dashboard' com os dados das ações
+        return view('dashboard', ['acoes' => $data]);
     }
-    // Lida com respostas malsucedidas ou ausência de dados
-    return [
-        'symbol' => $ticker,
-        'name' => 'Dados não encontrados',
-        'price' => 0.00,
-        'logo' => null
-    ];
-}
+
+    private function buscarDadosAcao($ticker)
+    {   
+        // Chamada à API para buscar os detalhes da ação usando o símbolo
+        $response = Http::get(getenv('BRAPI_API_URL') . "quote/{$ticker}?token=" . getenv('BRAPI_API_TOKEN'));
+
+        if ($response->successful()) {
+            $data = $response->json();
+
+            // Acesse os dados dentro de "results"
+            $acao = $data['results'][0] ?? null;
+
+            if ($acao) {
+                return [
+                    'symbol' => $acao['symbol'] ?? 'N/A',
+                    'name' => $acao['shortName'] ?? 'Nome não disponível',
+                    'price' => $acao['regularMarketPrice'] ?? 0.00,
+                    'logo' => $acao['logourl'] ?? null
+                ];
+            }
+        }
+        // Lida com respostas malsucedidas ou ausência de dados
+        return [
+            'symbol' => $ticker,
+            'name' => 'Dados não encontrados',
+            'price' => 0.00,
+            'logo' => null
+        ];
+    }
+    private function buscarTopAcoes($quantidade){
+        
+        $request = getenv('BRAPI_API_URL') . "quote/list?type=stock&sortBy=volume&sortOrder=desc&limit=$quantidade&token=" . getenv('BRAPI_API_EXAMPLE');
+
+        $response = Http::get($request);
+
+         // Verifica se a requisição foi bem-sucedida
+        if ($response->successful()) {
+        // Converte o JSON para array associativo
+        $data = $response->json();
+        
+        // Acessa o array de 'stocks'
+        $stocks = $data['stocks'];
+        
+        // Retorna ou processa os 'stocks' conforme necessário
+        return response()->json($stocks);
+        } else {
+        // Caso haja algum erro, retorna uma resposta de erro
+        return response()->json(['error' => 'Unable to fetch stocks data'], 500);
+        }
+
+    }
 
 
            

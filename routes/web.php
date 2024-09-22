@@ -9,7 +9,6 @@ Route::get('/', function () {
 Route::get('/link', function () {
     return view('link');
 });
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+Route::get('/dashboard', [AcaoControler::class, 'dashboard']);
+
 Route::get('/acao/{symbol}', [AcaoControler::class, 'show'])->name('acao.show');
