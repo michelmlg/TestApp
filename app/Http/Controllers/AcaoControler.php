@@ -58,7 +58,7 @@ class AcaoControler extends Controller
     }
     private function buscarTopAcoes($quantidade){
         
-        $request = getenv('BRAPI_API_URL') . "quote/list?type=stock&sortBy=volume&sortOrder=desc&limit=$quantidade&token=" . getenv('BRAPI_API_EXAMPLE');
+        $request = getenv('BRAPI_API_URL') . "quote/list?type=stock&sortBy=market_cap_basic&sortOrder=desc&limit=$quantidade&token=" . getenv('BRAPI_API_EXAMPLE');
 
         $response = Http::get($request);
 
