@@ -56,28 +56,50 @@ class AcaoControler extends Controller
             'logo' => null
         ];
     }
-    private function buscarTopAcoes($quantidade){
-        
-        $request = getenv('BRAPI_API_URL') . "quote/list?type=stock&sortBy=market_cap_basic&sortOrder=desc&limit=$quantidade&token=" . getenv('BRAPI_API_EXAMPLE');
-
+    private function buscarAcoes($limite = 20) {
+        $request = getenv('BRAPI_API_URL') . "quote/list?type=stock&sortBy=market_cap_basic&sortOrder=desc&limit=$limite&token=" . getenv('BRAPI_API_EXAMPLE');
+    
         $response = Http::get($request);
-
-         // Verifica se a requisição foi bem-sucedida
+    
+        // Verifica se a requisição foi bem-sucedida
         if ($response->successful()) {
-        // Converte o JSON para array associativo
-        $data = $response->json();
-        
-        // Acessa o array de 'stocks'
-        $stocks = $data['stocks'];
-        
-        // Retorna ou processa os 'stocks' conforme necessário
-        return response()->json($stocks);
-        } else {
-        // Caso haja algum erro, retorna uma resposta de erro
-        return response()->json(['error' => 'Unable to fetch stocks data'], 500);
+            return $response->json()['stocks'];
         }
-
+    
+        // Caso haja algum erro, retorna uma resposta de erro
+        throw new Exception('Unable to fetch stocks data');
     }
+    
+    private function buscarTopAcoes($quantidade) {
+        $limiteInicial = 20; // Limite inicial para a primeira busca
+        $acoes = [];
+        $ultimoIndex = 0; // Para controlar o índice da última busca
+    
+        while (count($acoes) < $quantidade) {
+            // Busca as ações
+            $stocks = $this->buscarAcoes($limiteInicial);
+    
+            // Filtra ações não fracionárias
+            $nonFractionalStocks = array_filter($stocks, function($stock) {
+                return substr($stock['stock'], -1) !== 'F';  // Verifica se a ação não termina com 'F'
+            });
+    
+            // Adiciona as ações não fracionárias ao array de ações
+            $acoes = array_merge($acoes, array_values($nonFractionalStocks));
+            
+            // Se já coletou ações suficientes, interrompe
+            if (count($acoes) >= $quantidade) {
+                break;
+            }
+    
+            // Atualiza o limite para a próxima busca (opcional)
+            $limiteInicial += 20; // Aumenta o limite para a próxima busca, se necessário
+        }
+    
+        // Retorna as ações não fracionárias até o número solicitado
+        return response()->json($acoes);
+    }
+    
 
 
            
