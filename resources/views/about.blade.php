@@ -1,11 +1,11 @@
 <x-layout>
     <x-slot:pageTitle>
-        Link
+        About Page
     </x-slot:pageTitle>
     <h1>
-        Link
+        Sobre
     </h1>
     <p>
-        Página de link.
+        Sobre
     </p>
 </x-layout>
