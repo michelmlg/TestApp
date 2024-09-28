@@ -27,15 +27,5 @@ class AcaoControler extends Controller
             'bdrs' => $bdrs,    // BDRs
         ]);
     }
-
-
-    // public function dashboard()
-    // {
-    //     // Chama a função buscarAcoesMarketCap para obter as ações
-    //     $acoes = Acao::buscarAcoesMarketCap(60);
-
-    //     // Retorna a view 'dashboard' com os dados das ações
-    //     return view('dashboard', ['acoes' => $acoes]);
-    // }
           
 }

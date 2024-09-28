@@ -16,18 +16,6 @@ class Acao{
             // Acesse os dados dentro de "results"
             $acao = $data['results'][0] ?? null;
 
-            // if ($acao) {
-            //     return [
-            //         'symbol' => $acao['symbol'] ?? 'N/A',
-            //         'nome' => $acao['name'] ?? 'N/A',
-            //         'empresa' => $acao['longName'] ?? 'Nome não disponível',
-            //         'price' => $acao['regularMarketPrice'] ?? 0.00,
-            //         'dataUltValor' => $acao['regularMarketTime'] ?? 0.00,
-            //         'volume' => $acao['regularMarketVolume'] ?? 0.00,
-            //         'logo' => $acao['logourl'] ?? null
-            //     ];
-            // }
-
             return $acao;
         }
         // Lida com respostas malsucedidas ou ausência de dados
