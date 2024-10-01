@@ -19,7 +19,7 @@
             <div class="banner-text" 
                  style="position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); color: white; text-align: center;">
                 <h2>Dashboard de Ativos</h2>
-                <p>Visualize e gerencie seus ativos financeiros</p>
+                <p>Visualize e compare ativos financeiros</p>
             </div>
         </section>
 
@@ -60,6 +60,31 @@
                 <div class="col ms-3 border-0">
                     <p class="mt-2 fw-bold">FIIs</p>
                     <hr>
+                    @foreach($fiis as $fii)
+                <a href="{{ route('acao.show',  ['symbol' => $fii['stock']]) }}" style="text-decoration: none; color: inherit; ">
+                    <div class="w-100 stocks p-2 mt-3">
+
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <img src="{{ $fii['logo'] }}" style="width: 3rem; height: 3rem; border: none;">
+                                <div class="ms-3">
+                                    <h6 class="mb-0 fw-bold">{{ $fii['stock'] }}</h6>
+                                    <p class="text-muted text-sm-start mb-0">{{ $acao['name'] }}</p>
+                                </div>
+                            </div>
+                            <div class="ms-auto text-end">
+                                @if($fii['change'] < 0)
+                                    <p class="text-danger mb-0">{{ number_format($fii['change'], 2, ',','.')}}%</p>
+                                    <p class="text-danger mb-0 fw-bold">${{ number_format($fii['close'], 2 ) }}</p>
+                                @else
+                                    <p class="text-success mb-0">{{ number_format($fii['change'], 2, ',','.') }}%</p>
+                                    <p class="text-success mb-0 fw-bold">${{ number_format($fii['close'], 2) }}</p>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                @endforeach
 
 
                 </div>

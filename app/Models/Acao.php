@@ -72,4 +72,25 @@ class Acao{
         // Retorna um array vazio em caso de erro
         return [];
     }
+
+    public static function buscarFii($limite)
+    {
+        // Constrói a URL da requisição para buscar ações com base no market cap
+        $request = getenv('BRAPI_API_URL') . "quote/list?type=fund&sector=Miscellaneous&sortOrder=desc&limit=$limite&token=" . getenv('BRAPI_API_EXAMPLE');
+
+        // Faz a requisição à API
+        $response = Http::get($request);
+
+        // Verifica se a resposta foi bem-sucedida
+        if ($response->successful()) {
+            $stocks = $response->json()['stocks'];
+
+
+            // Retorna a lista de ações filtradas
+            return $stocks;
+        }
+
+        // Retorna um array vazio em caso de erro
+        return [];
+    }
 }
