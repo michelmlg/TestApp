@@ -17,9 +17,33 @@ use App\Http\Controllers\HomeController;
         <!-- Styles -->
         <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
 
+        <!-- Custom Styles -->
+        <style>
+            .bg-dark {
+                background-color: #070F26 !important; /* Cor personalizada */
+            }
+
+            .navbar-dark .navbar-brand {
+                color: #ffffff !important; /* Cor do texto da marca (logo) */
+            }
+
+            .navbar-dark .nav-link {
+                color: #b3c0d1 !important; /* Cor dos links do menu */
+            }
+            .nav-link:active{
+                color: #ffffff !important; /* Cor dos links do menu */
+            }
+
+            .navbar-dark .nav-link:hover {
+                color: #ffffff !important; /* Cor do link ao passar o mouse */
+            }
+            .stocks:hover{
+                background-color: #696273;
+            }
+        </style>
+
     </head>
     <body>
-
         <nav class="navbar navbar-expand-lg p-3 navbar-dark bg-dark">
             <a class="navbar-brand" href="#">Numo Dash</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

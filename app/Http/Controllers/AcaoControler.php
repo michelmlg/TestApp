@@ -19,7 +19,7 @@ class AcaoControler extends Controller
     {
         // Faz as três requisições simultâneas para buscar os diferentes dados
         $acoes = Acao::buscarAcoesMarketCap(60); // Ações normais
-        $bdrs = Acao::buscarBdrMarketCap(60);   // BDRs
+        $bdrs = Acao::buscarBdrMarketCap(31);   // BDRs
 
         // Retorna a view 'dashboard' passando os dados de cada tipo
         return view('dashboard', [
