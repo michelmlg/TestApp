@@ -10,20 +10,20 @@ class AcaoControler extends Controller
 {
     public function show($symbol)
     {
-        $acao = Acao::buscarDadosAcao($symbol);
+        $ativo = Acao::buscarDadosAtivo($symbol);
 
-        return view('acao.infoPage', compact('acao'));
+        return view('web.ativo.infoPage', compact('ativo'));
     }
 
     public function dashboard()
     {
         // Faz as três requisições simultâneas para buscar os diferentes dados
         $acoes = Acao::buscarAcoesMarketCap(60); // Ações normais
-        $bdrs = Acao::buscarBdrMarketCap(31);   // BDRs
-        $fiis = Acao::buscarFii(31);
+        $bdrs = Acao::buscarBdrMarketCap(30);   // BDRs
+        $fiis = Acao::buscarFii(90);
 
         // Retorna a view 'dashboard' passando os dados de cada tipo
-        return view('dashboard', [
+        return view('web.dashboard', [
             'acoes' => $acoes,  // Ações normais
             'bdrs' => $bdrs,    // BDRs
             'fiis' => $fiis,

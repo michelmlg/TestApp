@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout.default>
     <x-slot:pageTitle>
         About Page
     </x-slot:pageTitle>
@@ -8,4 +8,4 @@
     <p>
         Sobre
     </p>
-</x-layout>
+</x-layout.default>

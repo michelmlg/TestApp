@@ -10,37 +10,8 @@ use App\Http\Controllers\HomeController;
 
         <title>{{$pageTitle}}</title>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
-
-        <!-- Custom Styles -->
-        <style>
-            .bg-dark {
-                background-color: #070F26 !important; /* Cor personalizada */
-            }
-
-            .navbar-dark .navbar-brand {
-                color: #ffffff !important; /* Cor do texto da marca (logo) */
-            }
-
-            .navbar-dark .nav-link {
-                color: #b3c0d1 !important; /* Cor dos links do menu */
-            }
-            .nav-link:active{
-                color: #ffffff !important; /* Cor dos links do menu */
-            }
-
-            .navbar-dark .nav-link:hover {
-                color: #ffffff !important; /* Cor do link ao passar o mouse */
-            }
-            .stocks:hover{
-                background-color: #696273;
-            }
-        </style>
+        @include('web.layout.head')
+        
 
     </head>
     <body>
@@ -77,9 +48,7 @@ use App\Http\Controllers\HomeController;
         {{$slot}}
 
 
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
-        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        
         
     </body>
 </html>

@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout.default>
     <x-slot:pageTitle>
         Home
     </x-slot:pageTitle>
@@ -9,4 +9,4 @@
     <?php
     var_dump(getenv());
     ?>
-</x-layout>
+</x-layout.default>
