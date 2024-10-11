@@ -69,7 +69,7 @@
                                     <img src="{{ $fii['logo'] }}" style="width: 3rem; height: 3rem; border: none;">
                                     <div class="ms-3">
                                         <h6 class="mb-0 fw-bold">{{ $fii['stock'] }}</h6>
-                                        <p class="text-muted text-sm-start mb-0">{{ $acao['name'] }}</p>
+                                        <p class="text-muted text-sm-start mb-0">{{ $fii['name'] }}</p>
                                     </div>
                                 </div>
                                 <div class="ms-auto text-end">
