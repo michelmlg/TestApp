@@ -1,3 +1,12 @@
+@php
+ // Definir o limite de quantos ativos exibir
+    $limit = isset($_GET['limit']) ? intval($_GET['limit']) : 5;
+
+    // Verificar o número total de ações e ajustar o limite ao número total, se necessário
+    $totalAcoes = count($acoes);
+    $limit = min($limit, $totalAcoes); // Garante que o limite não exceda o total de ações
+@endphp
+
 <x-layout.default>
     <x-slot:pageTitle>
         Dashboard
@@ -45,7 +54,7 @@
                                         <p class="text-danger mb-0">{{ number_format($acao['change'], 2, ',','.')}}%</p>
                                         <p class="text-danger mb-0 fw-bold">R${{ number_format($acao['close'], 2 ) }}</p>
                                     @else
-                                        <p class="text-success mb-0">{{ number_format($acao['change'], 2, ',','.') }}%</p>
+                                        <p class="text-success mb-0">+{{ number_format($acao['change'], 2, ',','.') }}%</p>
                                         <p class="text-success mb-0 fw-bold">R${{ number_format($acao['close'], 2) }}</p>
                                     @endif
                                 </div>
@@ -77,7 +86,7 @@
                                         <p class="text-danger mb-0">{{ number_format($fii['change'], 2, ',','.')}}%</p>
                                         <p class="text-danger mb-0 fw-bold">R${{ number_format($fii['close'], 2 ) }}</p>
                                     @else
-                                        <p class="text-success mb-0">{{ number_format($fii['change'], 2, ',','.') }}%</p>
+                                        <p class="text-success mb-0">+{{ number_format($fii['change'], 2, ',','.') }}%</p>
                                         <p class="text-success mb-0 fw-bold">R${{ number_format($fii['close'], 2) }}</p>
                                     @endif
                                 </div>
@@ -108,7 +117,7 @@
                                         <p class="text-danger mb-0">{{ number_format($bdr['change'], 2, ',','.')}}%</p>
                                         <p class="text-danger mb-0 fw-bold">R${{ number_format($bdr['close'], 2 ) }}</p>
                                     @else
-                                        <p class="text-success mb-0">{{ number_format($bdr['change'], 2, ',','.') }}%</p>
+                                        <p class="text-success mb-0">+{{ number_format($bdr['change'], 2, ',','.') }}%</p>
                                         <p class="text-success mb-0 fw-bold">R${{ number_format($bdr['close'], 2) }}</p>
                                     @endif
                                 </div>
@@ -121,7 +130,8 @@
                 </div>
             </div>
         </div>
-    
+
+        
     
     
     </main>

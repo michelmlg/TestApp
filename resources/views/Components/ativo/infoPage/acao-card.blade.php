@@ -1,4 +1,4 @@
-<div class="card w-100 p-2 shadow-sm" style="border-radius: 10px;">
+<div class="w-100 p-2 shadow-sm border" style="border-radius: 10px;">
     <div class="d-flex align-items-center justify-content-between">
         <img src="{{ $ativo['logourl'] }}" class="img-thumbnail rounded-circle" style="width: 5rem; height: 5rem; border: none;">
         <div class="ms-3">

@@ -1,4 +1,4 @@
-<div class="mt-4 p-3 shadow-sm bg-white" style="border-radius: 10px;">
+<div class="mt-4 p-3 shadow-sm bg-white border" style="border-radius: 10px;">
     <h5>Detalhes da Ação</h5>
     <ul class="list-group list-group-flush">
         <li class="list-group-item">Preço Máximo do Dia: R${{ number_format($ativo['regularMarketDayHigh'], 2, ',', '.') }}</li>
