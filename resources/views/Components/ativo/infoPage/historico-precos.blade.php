@@ -15,13 +15,14 @@
         $dataHigh[] = $dia['high'];
         $dataLow[] = $dia['low'];
         $dataClose[] = $dia['close'];
+        $volume[] = $dia['volume'];
     }
     ?>
 
-    <canvas id="myChart"></canvas>
+    <canvas id="cotacao"></canvas>
 
     <script>
-        const ctx = document.getElementById('myChart').getContext('2d');
+        const ctx = document.getElementById('cotacao').getContext('2d');
 
         const labels = <?= json_encode($labels) ?>;
         const dataOpen = <?= json_encode($dataOpen) ?>;
