@@ -43,7 +43,7 @@
 
                             <div class="d-flex align-items-center justify-content-between">
                                 <div class="d-flex align-items-center">
-                                    <img src="{{ $acao['logo'] }}" style="width: 3rem; height: 3rem; border: none;">
+                                    <img src="{{ $acao['logo'] }}" class="rounded" style="width: 3rem; height: 3rem; border: none;">
                                     <div class="ms-3">
                                         <h6 class="mb-0 fw-bold">{{ $acao['stock'] }}</h6>
                                         <p class="text-muted text-sm-start mb-0">{{ $acao['name'] }}</p>

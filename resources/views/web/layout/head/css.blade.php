@@ -20,6 +20,6 @@
         color: #ffffff !important; /* Cor do link ao passar o mouse */
     }
     .stocks:hover{
-        background-color: #696273;
+        background-color:rgb(197, 184, 214);
     }
 </style>
