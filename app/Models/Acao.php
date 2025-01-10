@@ -3,7 +3,8 @@ namespace App\Models;
 
 use Illuminate\Support\Facades\Http;
 
-class Acao{
+class Acao
+{
 
     public static function buscarDadosAtivo($ticker)
     {   
@@ -29,7 +30,7 @@ class Acao{
 
     public static function buscarAcoesMarketCap($limite)
     {
-        // Constrói a URL da requisição para buscar ações com base no market cap
+        
         $request = getenv('BRAPI_API_URL') . "quote/list?type=stock&sortBy=market_cap_basic&sortOrder=desc&limit=$limite&token=" . getenv('BRAPI_API_EXAMPLE');
 
         // Faz a requisição à API

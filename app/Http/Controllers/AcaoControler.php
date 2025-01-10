@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Acao;
 
-class AcaoControler extends Controller
+class AcaoControler
 {
     public function show($symbol)
     {
